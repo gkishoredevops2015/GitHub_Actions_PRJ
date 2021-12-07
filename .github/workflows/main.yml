@@ -8,7 +8,7 @@ on:
       region:
         description: "AWS Region"
         required: true
-        default: "ap-southeast-2"
+        default: "us-east-1"
       bucketName:
         description: "S3 Bucket Name"
         required: true
@@ -25,8 +25,7 @@ jobs:
         id: creds
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          role-to-assume: arn:aws:iam::889413591718:role/my-github-actions-role-test
           aws-region: ${{ github.event.inputs.region }} 
 
       - name: Deploy S3 Buckets CloudFormation Stacks
