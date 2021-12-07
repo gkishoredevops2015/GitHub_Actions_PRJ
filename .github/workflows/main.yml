@@ -31,10 +31,10 @@ jobs:
           aws-region: ${{ github.event.inputs.region }} 
 
       - name: Deploy S3 Buckets CloudFormation Stacks
-        id: s3-buckets
+        id: git-actions1
         uses: aws-actions/aws-cloudformation-github-deploy@v1.0.3
         with:
-          name:  s3-buckets
+          name:  git-actions1
           template: s3.yml
           parameter-overrides: >-
             BucketName=${{ github.event.inputs.bucketName }}
