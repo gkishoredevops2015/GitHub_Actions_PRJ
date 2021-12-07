@@ -27,7 +27,6 @@ jobs:
         uses: aws-actions/configure-aws-credentials@master
         with:
           # role-to-assume: arn:aws:iam::889413591718:role/my-github-actions-role-test
-          args: --acl public-read --follow-symlinks --delete --exclude '.git*/*'
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ github.event.inputs.region }} 
@@ -36,7 +35,6 @@ jobs:
         id: s3-buckets
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
-          args: --acl public-read --follow-symlinks --delete --exclude '.git*/*'
           name:  s3-buckets
           template: s3.yml
           parameter-overrides: >-
